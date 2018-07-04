@@ -22,6 +22,6 @@
 //EXIT
 #define MPU_INT GPIO_PIN_8 //PE1
 #define IST_INT GPIO_PIN_3 //PE3
-
+#define SCL_INT GPIO_PIN_6 //PE6
 
 #endif

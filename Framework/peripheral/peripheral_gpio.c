@@ -16,7 +16,7 @@
 #include "rtos_semaphore.h"
 #include "rtos_init.h"
 
-
+uint8_t tmpDebug=0;
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin){
 	//fw_printfln("HAL_GPIO_EXTI_Callback %d", GPIO_Pin);
 	switch(GPIO_Pin){
@@ -29,7 +29,15 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin){
 		case IST_INT:
 			//osSemaphoreRelease(refreshMPU6050SemaphoreHandle);
 			break;
+		case SCL_INT:
+			tmpDebug =1;
+			break;
 		default:
 			fw_Warning();
 	}
+//	if(GPIO_Pin == SCL_INT)
+//	{
+//		tmpDebug = 1；
+//	}
 }
+

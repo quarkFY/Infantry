@@ -65,6 +65,7 @@
 #define SDA_GPIO_Port GPIOE
 #define SCL_Pin GPIO_PIN_6
 #define SCL_GPIO_Port GPIOE
+#define SCL_EXTI_IRQn EXTI9_5_IRQn
 #define LASER2_Pin GPIO_PIN_0
 #define LASER2_GPIO_Port GPIOI
 #define EncoderB_Pin GPIO_PIN_11

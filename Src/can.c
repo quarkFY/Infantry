@@ -79,7 +79,8 @@
 CAN_HandleTypeDef hcan1;
 CAN_HandleTypeDef hcan2;
 
-/* CAN1 init function */void MX_CAN1_Init(void)
+/* CAN1 init function */
+void MX_CAN1_Init(void)
 {
 
   hcan1.Instance = CAN1;
@@ -122,6 +123,7 @@ void MX_CAN2_Init(void)
   }
 
 }
+
 
 static uint32_t HAL_RCC_CAN1_CLK_ENABLED=0;
 
