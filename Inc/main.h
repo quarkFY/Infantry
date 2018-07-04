@@ -61,6 +61,10 @@
 
 #define LASER_Pin GPIO_PIN_13
 #define LASER_GPIO_Port GPIOG
+#define SDA_Pin GPIO_PIN_5
+#define SDA_GPIO_Port GPIOE
+#define SCL_Pin GPIO_PIN_6
+#define SCL_GPIO_Port GPIOE
 #define LASER2_Pin GPIO_PIN_0
 #define LASER2_GPIO_Port GPIOI
 #define EncoderB_Pin GPIO_PIN_11
