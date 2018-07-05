@@ -60,7 +60,12 @@ RemoteSwitch_t g_switch1;   //ң������ದ��
 
 extern RampGen_t frictionRamp ;  //摩擦轮斜坡
 extern RampGen_t LRSpeedRamp ;   //键盘速度斜坡
-extern RampGen_t FBSpeedRamp  ;   
+extern RampGen_t FBSpeedRamp  ;  
+
+extern float CMFLAngleTarget;
+extern float CMFRAngleTarget;
+extern float CMBLAngleTarget;
+extern float CMBRAngleTarget;
 
 extern RC_Ctl_t RC_CtrlData; 
 extern xSemaphoreHandle xSemaphore_rcuart;
@@ -221,8 +226,15 @@ void RemoteControlProcess(Remote *rc)
 	if(GetWorkState()!=PREPARE_STATE)
 	{
 		SetShootMode(MANUL);
-		ChassisSpeedRef.forward_back_ref = (RC_CtrlData.rc.ch1 - (int16_t)REMOTE_CONTROLLER_STICK_OFFSET) * STICK_TO_CHASSIS_SPEED_REF_FACT;
-		ChassisSpeedRef.left_right_ref   = (rc->ch0 - (int16_t)REMOTE_CONTROLLER_STICK_OFFSET) * STICK_TO_CHASSIS_SPEED_REF_FACT; 
+		
+		///////////////////�ǵ�����///////////////////
+		CMFRAngleTarget += (RC_CtrlData.rc.ch1 - (int16_t)REMOTE_CONTROLLER_STICK_OFFSET) * STICK_TO_LAND_REF_FACT;
+		CMFLAngleTarget = -CMFRAngleTarget;
+		
+		CMBRAngleTarget += (rc->ch3 - (int16_t)REMOTE_CONTROLLER_STICK_OFFSET) * STICK_TO_LAND_REF_FACT;
+		CMBLAngleTarget = -CMBRAngleTarget;
+		
+		
 		
  		pitchAngleTarget += (rc->ch3 - (int16_t)REMOTE_CONTROLLER_STICK_OFFSET) * STICK_TO_PITCH_ANGLE_INC_FACT;
 		yawAngleTarget   -= (rc->ch2 - (int16_t)REMOTE_CONTROLLER_STICK_OFFSET) * STICK_TO_YAW_ANGLE_INC_FACT;
@@ -273,6 +285,7 @@ uint16_t auto_y_default = 380;
 extern float friction_speed;
 extern float now_friction_speed;
 extern float realBulletSpeed;
+//uint8_t sdadebug;
 void MouseKeyControlProcess(Mouse *mouse, Key *key)
 {
 	//++delayCnt;

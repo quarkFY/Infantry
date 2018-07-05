@@ -19,6 +19,7 @@
 //#define INFANTRY_1
 #define INFANTRY_4
 //#define INFANTRY_5                                                                           
+#define CMReduction 19
 
 void CMGMControlTask(void const * argument);
 void ControlYaw(void);
@@ -31,4 +32,10 @@ void ControlCMBR(void);
 void ControlPLATE(void);
 void ControlLFRICTION(void);
 void ControlRFRICTION(void);
+
+void Control_ANGLE_CMFL(void);
+void Control_ANGLE_CMFR(void);
+void Control_ANGLE_CMBL(void);
+void Control_ANGLE_CMBR(void);
+
 #endif

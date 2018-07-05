@@ -16,7 +16,7 @@
 #include "rtos_semaphore.h"
 #include "rtos_init.h"
 
-uint8_t tmpDebug=0;
+uint8_t tmpDebug=0,sdadebug;
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin){
 	//fw_printfln("HAL_GPIO_EXTI_Callback %d", GPIO_Pin);
 	switch(GPIO_Pin){
@@ -31,6 +31,15 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin){
 			break;
 		case SCL_INT:
 			tmpDebug =1;
+				sdadebug=3;
+		 if(HAL_GPIO_ReadPin(SDA_GPIO_Port,SDA_Pin)==GPIO_PIN_RESET)
+		{
+			sdadebug=1;
+		}
+		else if(HAL_GPIO_ReadPin(SDA_GPIO_Port,SDA_Pin)==GPIO_PIN_SET)
+		{
+			sdadebug = 2;
+		}
 			break;
 		default:
 			fw_Warning();

@@ -137,6 +137,15 @@ void Timer_2ms_lTask(void const * argument)
 		}            //在从STOP切换到其他状态时，s_time_tick_2ms清零重加，会重新复位陀螺仪
 
 		getJudgeState();
+//		sdadebug=3;
+//		 if(HAL_GPIO_ReadPin(SDA_GPIO_Port,SDA_Pin)==GPIO_PIN_RESET)
+//		{
+//			sdadebug=1;
+//		}
+//		else if(HAL_GPIO_ReadPin(SDA_GPIO_Port,SDA_Pin)==GPIO_PIN_SET)
+//		{
+//			sdadebug = 2;
+//		}
 		
 		if(g_workState==RUNE_STATE)
 		{
